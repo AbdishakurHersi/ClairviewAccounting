@@ -1,0 +1,941 @@
+---
+title: "Pixel Perfect Websites"
+description: "Meta description for the page"
+preloadImg: "/assets/images/landing.jpg"
+permalink: "/"
+eleventyNavigation:
+  key: Home
+  order: 100
+---
+
+{% extends "layouts/base.html" %} {% block head %}
+<link rel="stylesheet" href="/assets/css/local.css" />
+<link rel="stylesheet" href="/assets/css/critical.css" />
+
+<!-- Script for Netlify Identity -->
+<script
+  defer
+  src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+></script>
+<script defer>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+{% endblock %} {% block body %}
+
+<!-- Usage Notes:
+We made this stitch to overlap the section below it, so if there's a patterned texture or image background on the next section below, it will overlap on top of it. Other Stitches like this would have a white gap between the cards and the next section. In order to make Stitches like this work, we need to add a padding top on the section below it to counteract the overlap. Here's the padding top you need to add to the section below this one and all the breakpoints to add them so this design will work with whatever comes after it:
+
+ON MOBILE (360px): add padding-top: (750/16rem); using LESS, or padding-top: calc(750 / 16 * 1rem); if you're using SCSS, or padding-top: 46.875rem; if you're just using vanilla CSS.
+
+ON TABLET (768px): Reset to padding-top: (500/16rem); using LESS, padding-top: calc(500 / 16 * 1rem) for SCSS or padding-top: 31.25rem; for CSS.
+
+ON DESKTOP (1024px): Reset to padding-top: (250/16rem); using LESS, padding-top: calc(250 / 16 * 1rem) for SCSS or padding-top: 15.625rem; for CSS.
+
+Doing this will complete the overlapping "breaking the container" look.
+-->
+
+<!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+
+<section id="hero-1299">
+  <div class="cs-container">
+    <div class="cs-content">
+      <span class="cs-topper">Welcome to Koreye Accounting and Taxation</span>
+      <h1 class="cs-title">
+        Your Trusted Accounting and Tax Preparation Experts
+      </h1>
+      <p class="cs-text">
+        With over 10 years of industry experience, we offer comprehensive
+        accounting and tax preparation services for individuals and businesses
+        in Edmonton, AB and surrounding areas. Our dedicated professionals
+        ensure accurate financial management and strategic tax solutions
+        tailored to your needs.
+      </p>
+      <a href="/contact" class="cs-button-solid">Free Consultation</a>
+    </div>
+    <!--To make your own background crops of people use https://www.remove.bg/-->
+    <div class="cs-picture-wrapper">
+      <picture class="cs-picture">
+        <source
+          media="(max-width: 600px)"
+          srcset="assets/images/StandingKoorenew.png"
+        />
+        <source
+          media="(min-width: 601px)"
+          srcset="assets/images/StandingKoorenew.png"
+        />
+        <img
+          aria-hidden="true"
+          decoding="async"
+          src="assets/images/StandingKoorenew.png"
+          alt="accountant"
+          width="468"
+          height="658"
+        />
+      </picture>
+    </div>
+  </div>
+  <div class="cs-container">
+    <ul class="cs-card-group">
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/brain.svg"
+            loading="lazy"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+          <h3 class="cs-h3">Tax Preparation and Filing</h3>
+          <p class="cs-item-text">
+            Comprehensive tax preparation and filing services for individuals
+            and businesses, ensuring compliance with the latest tax laws and
+            regulations.
+          </p>
+        </a>
+      </li>
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/users.svg"
+            loading="lazy"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+          <h3 class="cs-h3">Bookkeeping Services</h3>
+          <p class="cs-item-text">
+            Accurate and timely bookkeeping to manage your financial records,
+            helping you stay organized and make informed business decisions.
+          </p>
+        </a>
+      </li>
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/Layer.svg"
+            loading="lazy"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+          <h3 class="cs-h3">Payroll Services</h3>
+          <p class="cs-item-text">
+            Reliable payroll management to ensure your employees are paid
+            accurately and on time, including handling taxes, deductions, and
+            compliance.
+          </p>
+        </a>
+      </li>
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/Layer.svg"
+            loading="lazy"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+          <h3 class="cs-h3">Financial Planning and Consulting</h3>
+          <p class="cs-item-text">
+            Strategic financial planning and consulting to help you achieve your
+            business and personal financial goals, including budgeting,
+            forecasting, and investment advice.
+          </p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!--Floating Arrow-->
+  <!--We wrap it in a picture element wrapper so we can use the wrapper as a box for it to live inside of instead of the section wrapper. This allows us to add overflow:hidden to the wrapper to cut off the graphic at the edge of the screen. If we added overflow:hidden to the section container it would clip the overlapping service cards. So we add this wrapper to allow us to clip only the graphic. -->
+  <picture class="cs-floater-wrapper">
+    <img
+      class="cs-floater"
+      aria-hidden="true"
+      decoding="async"
+      src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/yellow-arrow-reversed.svg"
+      alt="graphic"
+      width="956"
+      height="708"
+    />
+  </picture>
+  <!--Background Image, background image added in CSS at 1600px wide for parallax effect-->
+  <picture class="cs-background">
+    <!--Mobile Image-->
+    <source
+      media="(max-width: 1023px)"
+      srcset="
+        https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-t-reversed2.jpg
+      "
+    />
+    <!--Tablet and above Image-->
+    <source
+      media="(min-width: 1024px)"
+      srcset="
+        https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-reversed2.jpg
+      "
+    />
+    <img
+      loading="lazy"
+      decoding="async"
+      src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-reversed2.jpg"
+      alt="buildings"
+      width="1280"
+      height="568"
+    />
+  </picture>
+</section>
+
+<!-- ============================================ -->
+<!--                 Side By Side                 -->
+<!-- ============================================ -->
+
+<section id="RPsbs-1310">
+  <div class="cs-container">
+    <!-- Left Image Section -->
+    <div class="cs-image-group">
+      <!--Floating Box-->
+      <div class="cs-box">
+        <span class="cs-desc">Analytical, organized, and ethical</span>
+      </div>
+      <!--Image-->
+      <picture class="cs-picture">
+        <source
+          media="(max-width: 600px)"
+          srcset="/assets/images/sittingKorreye.jpg"
+        />
+        <source
+          media="(min-width: 601px)"
+          srcset="/assets/images/sittingKorreye.jpg"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src=""
+          alt="meeting"
+          width="630"
+          height="630"
+          aria-hidden="true"
+        />
+      </picture>
+    </div>
+    <!-- Right Content Section-->
+    <div class="cs-content">
+      <span class="cs-topper">Who we are</span>
+      <h2 class="cs-title">Our Commitment to Tailored Financial Solutions</h2>
+      <p class="cs-text">
+        Koreye Accounting and Taxation stands as a beacon of excellence with
+        over 10 years of industry expertise. Our firm has made a significant
+        impact across various sectors, including small businesses, self-employed
+        individuals, and large enterprises, ensuring tailored financial
+        solutions for each unique client. Throughout our decade of service,
+        Koreye Accounting and Taxation has successfully managed the accounting
+        needs of over 500 clients, delivering precise and compliant financial
+        statements. We have expertly guided 50+ businesses through seamless tax
+        preparation and financial management, reflecting our deep commitment to
+        accuracy and efficiency. Moreover, Koreye Accounting and Taxation has
+        developed specialized incorporation services for truck drivers and
+        comprehensive bookkeeping and payroll solutions, positioning ourselves
+        as leaders in financial management and strategic planning for businesses
+        of all sizes.
+      </p>
+      <a
+        class="cs-button-solid"
+        aria-label="learn more about our programs"
+        href="/about"
+        >More About Us</a
+      >
+      <ul class="cs-ul">
+        <li class="cs-item">
+          <span class="cs-number">10 +</span>
+          <h3 class="cs-h3">Years Of Accounting Experience</h3>
+        </li>
+        <li class="cs-item">
+          <span class="cs-number">1000 +</span>
+          <h3 class="cs-h3">Tax Returns Filed</h3>
+        </li>
+        <li class="cs-item">
+          <span class="cs-number">500 +</span>
+          <h3 class="cs-h3">Financial Statements Prepared</h3>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                  Services                    -->
+<!-- ============================================ -->
+
+<section id="services-1331">
+  <div class="cs-container">
+    <div class="cs-content">
+      <div class="cs-flex-group">
+        <span class="cs-topper">Our working process</span>
+        <h2 class="cs-title">
+          How Koreye Accounting and Taxation Works for You
+        </h2>
+      </div>
+      <p class="cs-text">
+        Step into the Future with Koreye Accounting and Taxation, where
+        innovation meets excellence. Our forward-thinking approach and
+        cutting-edge technology ensure your financial success in an
+        ever-evolving landscape.
+      </p>
+    </div>
+    <ul class="cs-card-group">
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <span class="cs-step">Step 1</span>
+          <h3 class="cs-h3">Discovery Call</h3>
+          <p class="cs-item-text">
+            We'll delve deep into understanding your unique needs and challages
+            to determine the best way forward.
+          </p>
+        </a>
+      </li>
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <span class="cs-step">Step 2</span>
+          <h3 class="cs-h3">Onboarding Call</h3>
+          <p class="cs-item-text">
+            Present tailored solution and services, ensuring they allign with
+            your objectives and discussing the potential investment
+          </p>
+        </a>
+      </li>
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <span class="cs-step">Step 3</span>
+          <h3 class="cs-h3">Implementation</h3>
+          <p class="cs-item-text">
+            We expertly implement our recommended accounting soultions, adapting
+            our strategies to fit your business's unique financial needs and
+            goals.
+          </p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <picture class="cs-background">
+    <!--Mobile Image-->
+    <source
+      media="(max-width: 600px)"
+      srcset="
+        https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/building-white.jpg
+      "
+    />
+    <!--Tablet and above Image-->
+    <source
+      media="(min-width: 601px)"
+      srcset="
+        https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/building-white.jpg
+      "
+    />
+    <img
+      src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/building-white.jpg"
+      alt="building"
+      width="1920"
+      height="700"
+      decoding="async"
+      loading="lazy"
+    />
+  </picture>
+</section>
+
+<!-- ============================================ -->
+<!--                    Services                  -->
+<!-- ============================================ -->
+
+<section id="services-1301">
+  <div class="cs-container">
+    <div class="cs-content">
+      <div class="cs-flex-group">
+        <span class="cs-topper">Our Services</span>
+        <h2 class="cs-title">Professional Tax & Accounting Services</h2>
+      </div>
+      <p class="cs-text">
+        At Koreye Accounting and Taxation, we deliver seamless tax preparation
+        and filing for accurate, stress-free results. Our expert bookkeeping and
+        payroll services ensure your finances are in perfect order. Achieve your
+        financial goals with our personalized planning and consulting.
+      </p>
+    </div>
+    <ul class="cs-card-group">
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/brain.svg"
+            loading="lazy"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+          <h3 class="cs-h3">Tax Preparation and Filing</h3>
+          <p class="cs-item-text">
+            We ensure you get the maximum refund with our expert tax preparation
+            for individuals and families. Whether you're filing general single
+            T4, T4A, T5, T5A forms, or managing taxes for Uber/taxi drivers,
+            students, or retired seniors, our services are designed to be
+            affordable without compromising on quality.
+          </p>
+        </a>
+      </li>
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/users.svg"
+            loading="lazy"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+          <h3 class="cs-h3">Self-Employed and Contractors</h3>
+          <p class="cs-item-text">
+            Our specialized services cater to self-employed individuals and
+            large businesses, including contractors. We handle everything from
+            tax preparation to detailed financial management, ensuring your
+            business runs smoothly and compliantly.
+          </p>
+        </a>
+      </li>
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/Layer.svg"
+            loading="lazy"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+          <h3 class="cs-h3">Incorporation Services for Truck Drivers</h3>
+          <p class="cs-item-text">
+            We offer tailored incorporation services for truck drivers, whether
+            you own trucks or not. Our packages are competitively priced at
+            $500, with costs adjusted based on your business size, ensuring you
+            get the best value for your investment.
+          </p>
+        </a>
+      </li>
+      <li class="cs-item">
+        <a href="/contact" class="cs-link">
+          <img
+            class="cs-icon"
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/Layer.svg"
+            loading="lazy"
+            decoding="async"
+            alt="icon"
+            width="40"
+            height="40"
+            aria-hidden="true"
+          />
+          <h3 class="cs-h3">Bookkeeping & Payroll Solutions</h3>
+          <p class="cs-item-text">
+            Our comprehensive bookkeeping and payroll services are customized to
+            fit the size of your business. We guarantee the lowest prices in the
+            market, providing exceptional value while keeping your financial
+            records accurate and up-to-date.
+          </p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                 Side By Side                 -->
+<!-- ============================================ -->
+
+<section id="RPsbs-1218">
+  <div class="cs-container">
+    <!-- Left Image Section -->
+    <div class="cs-image-group">
+      <!--Floating Box-->
+      <div class="cs-box">
+        <img
+          class="cs-icon"
+          loading="lazy"
+          decoding="async"
+          src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/medal.svg"
+          alt="icon"
+          width="521"
+          height="60"
+          aria-hidden="true"
+        />
+        <span class="cs-number">10+</span>
+        <span class="cs-desc">Years of Experience</span>
+      </div>
+      <!--Big Background Image-->
+      <picture class="cs-picture">
+        <source
+          media="(max-width: 600px)"
+          srcset="/assets/images/ServiceImage.jpg"
+        />
+        <source
+          media="(min-width: 601px)"
+          srcset="/assets/images/ServiceImage.jpg"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/assets/images/ServiceImage.jpg"
+          alt="meeting"
+          width="522"
+          height="560"
+          aria-hidden="true"
+        />
+      </picture>
+      <!--Swirl-->
+      <img
+        class="cs-graphic"
+        loading="lazy"
+        decoding="async"
+        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/swirl.svg"
+        alt="icon"
+        width="715"
+        height="715"
+        aria-hidden="true"
+      />
+    </div>
+    <!-- Right Content Section-->
+    <div class="cs-content">
+      <span class="cs-topper">SERVICE HIGHLIGHT</span>
+      <h2 class="cs-title">Strategic Tax Planning and Compliance</h2>
+      <p class="cs-text">
+        Our Strategic Tax Planning and Compliance service is your roadmap to
+        fiscal success. We go beyond mere compliance, offering proactive
+        strategies tailored to your unique financial situation. From intricate
+        tax filings to optimizing deductions, we ensure every aspect of your tax
+        planning is meticulously executed.
+        <br />
+        <br />
+        Our expert team stays abreast of the latest tax laws and regulations,
+        ensuring your business remains compliant while maximizing savings. With
+        our guidance, businesses can navigate the complexities of taxation with
+        confidence, empowering them to achieve their financial goals and thrive
+        in today's competitive landscape.
+      </p>
+
+      <a
+        class="cs-button-solid"
+        aria-label="learn more about our programs"
+        href="/contact"
+        >Book A Consultation</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--             Side By Side Reverse             -->
+<!-- ============================================ -->
+
+<section id="RPsbsr-1218">
+  <div class="cs-container">
+    <!-- Left Image Section -->
+    <div class="cs-image-group">
+      <!--Floating Box-->
+      <div class="cs-box">
+        <img
+          class="cs-icon"
+          loading="lazy"
+          decoding="async"
+          src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/medal.svg"
+          alt="icon"
+          width="521"
+          height="60"
+          aria-hidden="true"
+        />
+        <span class="cs-number">30+</span>
+        <span class="cs-desc">Migrations Completed</span>
+      </div>
+      <!--Big Background Image-->
+
+      <picture class="cs-picture">
+        <source
+          media="(max-width: 600px)"
+          srcset="/assets/images/migrationImage.jpg"
+        />
+        <source
+          media="(min-width: 601px)"
+          srcset="/assets/images/migrationImage.jpg"
+        />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="/assets/images/migrationImage.jpg"
+          alt="meeting"
+          width="522"
+          height="560"
+          aria-hidden="true"
+        />
+      </picture>
+      <!--Swirl-->
+      <img
+        class="cs-graphic"
+        loading="lazy"
+        decoding="async"
+        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/swirl.svg"
+        alt="icon"
+        width="715"
+        height="715"
+        aria-hidden="true"
+      />
+    </div>
+    <!-- Right Content Section-->
+    <div class="cs-content">
+      <span class="cs-topper">SERVICE HIGHLIGHT</span>
+      <h2 class="cs-title">Effortless Accounting Software Migration</h2>
+      <p class="cs-text">
+        Transitioning to new accounting software shouldn't be daunting. Our
+        Accounting Software Migration service ensures a smooth and seamless
+        shift, minimizing disruptions while maximizing the benefits of modern
+        technology.
+        <br />
+        <br />
+        Whether you're moving from a legacy system or upgrading to a more
+        sophisticated platform, our experienced team ensures the integrity and
+        accuracy of your financial data at every step. With a meticulous
+        approach honed through numerous successful migrations, we guarantee a
+        hassle-free transition that empowers your business for greater
+        efficiency and insight.
+      </p>
+
+      <a
+        class="cs-button-solid"
+        aria-label="learn more about our programs"
+        href="/contact"
+        >Book A Consultation</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                    Stats                     -->
+<!-- ============================================ -->
+
+<section id="stats-1230">
+  <div class="cs-container">
+    <div class="cs-content">
+      <div class="cs-flex">
+        <span class="cs-topper">YOU'RE IN GOOD COMPANY</span>
+        <h2 class="cs-title">Accounting Services With A Personal Touch</h2>
+        <p class="cs-text">
+          Unlock Maximum Refunds with Our Exceptional Accounting Services. With
+          a track record of 10/10 client reviews, we guarantee satisfaction.
+          From tax preparation to comprehensive bookkeeping, we ensure accuracy
+          and peace of mind. Contact us today for personalized attention and
+          affordable fees tailored to your needs.
+        </p>
+      </div>
+      <ul class="cs-card-group">
+        <li class="cs-item">
+          <img
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/transparency.svg"
+            alt="icon"
+            class="cs-icon"
+            aria-hidden="true"
+            decoding="async"
+            width="60"
+            height="60"
+          />
+          <h3 class="cs-h3">We Always Put You First</h3>
+        </li>
+        <li class="cs-item">
+          <img
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/empowerment.svg"
+            alt="icon"
+            class="cs-icon"
+            aria-hidden="true"
+            decoding="async"
+            width="60"
+            height="60"
+          />
+          <h3 class="cs-h3">Maximum Refund</h3>
+        </li>
+        <li class="cs-item">
+          <img
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/growth.svg"
+            alt="icon"
+            class="cs-icon"
+            aria-hidden="true"
+            decoding="async"
+            width="60"
+            height="60"
+          />
+          <h3 class="cs-h3">Excellent Service</h3>
+        </li>
+        <li class="cs-item">
+          <img
+            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/partnership.svg"
+            alt="icon"
+            class="cs-icon"
+            aria-hidden="true"
+            decoding="async"
+            width="60"
+            height="60"
+          />
+          <h3 class="cs-h3">Affordable Fees</h3>
+        </li>
+      </ul>
+    </div>
+    <ul class="cs-stat-group">
+      <li class="cs-stat">
+        <span class="cs-desc">Of Happy Clients</span>
+        <span class="cs-number">100's</span>
+      </li>
+      <li class="cs-stat">
+        <span class="cs-desc">Years of Experiences</span>
+        <span class="cs-number">10+</span>
+      </li>
+      <li class="cs-stat">
+        <span class="cs-desc">Industry Certifications</span>
+        <span class="cs-number">20+</span>
+      </li>
+      <li class="cs-stat">
+        <span class="cs-desc">Projects Completed</span>
+        <span class="cs-number">50+</span>
+      </li>
+      <li class="cs-stat">
+        <span class="cs-desc">Client Reviews</span>
+        <span class="cs-number">10/10</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                   Reviews                    -->
+<!-- ============================================ -->
+
+<section id="reviews-64">
+  <div class="cs-container">
+    <div class="cs-content">
+      <span class="cs-topper">TESTIMONIALS</span>
+      <h2 class="cs-title">What Our Clients Have To Say About Us</h2>
+      <p class="cs-text">
+        Our clients' satisfaction speaks volumes. They praise not just our
+        expertise, but also our genuine commitment and attentiveness.
+      </p>
+    </div>
+    <ul class="cs-card-group">
+      <li class="cs-item">
+        <img
+          class="cs-img"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/stars-yellow.svg"
+          alt="profile"
+          width="116"
+          height="20"
+        />
+        <span class="cs-name">John Doe</span>
+        <br />
+        <p class="cs-item-text">
+          Koreye Accounting delivered exceptional results! Their personalized
+          approach and attention to detail left me thoroughly impressed.
+        </p>
+      </li>
+      <li class="cs-item">
+        <img
+          class="cs-img"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/stars-yellow.svg"
+          alt="profile"
+          width="116"
+          height="20"
+        />
+        <span class="cs-name">Jane Smith</span>
+        <br />
+        <p class="cs-item-text">
+          Absolutely stellar service from Koreye Accounting! Their expertise and
+          commitment to excellence shine through in every interaction
+        </p>
+      </li>
+      <li class="cs-item">
+        <img
+          class="cs-img"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="https://csimg.nyc3.digitaloceanspaces.com/Reviews/stars-yellow.svg"
+          alt="profile"
+          width="116"
+          height="20"
+        />
+        <span class="cs-name">Thomas Madden</span>
+        <br />
+        <p class="cs-item-text">
+          Koreye Accounting surpassed all expectations! Their dedication to
+          client satisfaction is truly commendable
+        </p>
+      </li>
+    </ul>
+    <a aria-label="read more reviews" href="/contact" class="cs-button-solid"
+      >Book A Consultation</a
+    >
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                   Contact                    -->
+<!-- ============================================ -->
+
+<section id="contact-1403">
+  <div class="cs-container">
+    <div class="cs-content">
+      <span class="cs-topper">Contact Us</span>
+      <h2 class="cs-title">Get in Touch</h2>
+      <p class="cs-text">
+        We are a team of passionate and creative individuals dedicated to
+        crafting captivating designs that leave a lasting impression.
+      </p>
+      <ul class="cs-ul">
+        <li class="cs-li">
+          <picture class="cs-icon-wrapper">
+            <img
+              aria-hidden="true"
+              src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/phone-76.svg"
+              alt="phone icon"
+              class="cs-icon"
+              width="40"
+              height="40"
+              decoding="async"
+            />
+          </picture>
+          <div class="cs-flex-group">
+            <span class="cs-header">Phone</span>
+            <a
+              href="tel:888-4565-789
+                        "
+              class="cs-link"
+              >(788) 802-8770
+            </a>
+          </div>
+        </li>
+        <li class="cs-li">
+          <picture class="cs-icon-wrapper">
+            <img
+              aria-hidden="true"
+              src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/mail-76.svg"
+              alt="address icon"
+              class="cs-icon"
+              width="40"
+              height="40"
+              decoding="async"
+            />
+          </picture>
+          <div class="cs-flex-group">
+            <span class="cs-header">Email</span>
+            <a href="mailto:Email@stitch.com" class="cs-link"
+              >Kooreeye10@gmail.com</a
+            >
+          </div>
+        </li>
+        <li class="cs-li">
+          <picture class="cs-icon-wrapper">
+            <img
+              aria-hidden="true"
+              src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/pin-76.svg"
+              alt="address icon"
+              class="cs-icon"
+              width="40"
+              height="40"
+              decoding="async"
+            />
+          </picture>
+          <div class="cs-flex-group">
+            <span class="cs-header">Address</span>
+            <a href="" class="cs-link">12739 50 St NW, Edmonton, AB T5A 4L8</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--Form-->
+    <form class="cs-form" id="cs-form-1403" name="Contact Form" method="post">
+      <h3 class="cs-h3">Make Appointment</h3>
+      <label class="cs-label">
+        Name
+        <input
+          class="cs-input"
+          required
+          type="text"
+          id="name-1403"
+          name="name"
+          placeholder="Name"
+        />
+      </label>
+      <label class="cs-label cs-email">
+        Email
+        <input
+          class="cs-input"
+          required
+          type="email"
+          id="email-1403"
+          name="email"
+          placeholder="Email"
+        />
+      </label>
+      <label class="cs-label cs-phone">
+        Phone
+        <input
+          class="cs-input"
+          required
+          type="number"
+          id="phone-1403"
+          name="phone"
+          placeholder="Phone"
+        />
+      </label>
+      <label class="cs-label">
+        Message
+        <textarea
+          class="cs-input cs-textarea"
+          required
+          name="Message"
+          id="message-1403"
+          placeholder="Write message..."
+        ></textarea>
+      </label>
+      <button class="cs-button-solid cs-submit" type="submit">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

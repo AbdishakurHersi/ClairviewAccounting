@@ -1,0 +1,12 @@
+/*-- -------------------------- -->
+<---    Google Maps Iframe      -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #map-1403 iframe {
+    width: 100%;
+    /* 400px - 560px */
+    height: clamp(25rem, 42vw, 35rem);
+  }
+}
